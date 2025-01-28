@@ -14,23 +14,25 @@ PDFs: Each page is read and turned into a separate chunk.
 Word: Uses headings to split the document and then chunks large sections by token count.
 PowerPoint: Extracts text slide by slide.
 Excel: Converts each row into a chunk of text with relevant metadata (sheet, row number).
-Index Creation:
+### Index Creation:
 Faiss Index for semantic similarity search using Nebius-provided embeddings (via NebiusEmbedding).
 Whoosh Index for BM25-based text matching.
-Output: Produces LlamaIndex storage artifacts (docstore.json, graph_store.json, index_store.json, default__vector_store.faiss) in /data/faiss_index/, plus a Whoosh index stored in /data/whoosh_index/.
+### Output: Produces LlamaIndex storage artifacts (docstore.json, graph_store.json, index_store.json, default__vector_store.faiss) in /data/faiss_index/, plus a Whoosh index stored in /data/whoosh_index/.
 
 ## Inference Notebook
-Loading Artifacts: Reads the stored Faiss and Whoosh indexes into memory.
-Hybrid Retrieval:
+
+### Loading Artifacts:
+Reads the stored Faiss and Whoosh indexes into memory.
+### Hybrid Retrieval:
 Retrieves top-k matches from Faiss (vector similarity).
 Retrieves top-k matches from Whoosh (BM25).
 Combines them using a “reciprocal rank fusion” (or a similar approach) to produce a hybrid list of potentially relevant chunks.
 Reranks results using a cross-encoder.
-Context & LLM:
+### Context & LLM:
 Joins the top reranked chunks into a single “context” block.
 Feeds a final prompt (including the user’s question) to a Nebius LLM.
 Returns both an answer and references.
-UI: Implements a Gradio app for interactive querying.
+### User Iinterface (UI): Implements a Gradio app for interactive querying.
 
 
 # How to Use
