@@ -2,6 +2,8 @@
 This repository contains two Google Colab notebooks — Data Preparation and Inference — forming a working MVP of end-to-end Retrieval-Augmented Generation (RAG) pipeline.
 The goal is to ingest, process, and index a variety of document types (PDF, Word, PowerPoint, Excel) into both vector-based and text-based indexes, then serve user queries through an LLM, returning contextually relevant answers and sources.
 
+
+
 # Architecture
 
 ## Data Preparation Notebook
@@ -41,6 +43,7 @@ Returns both an answer and references.
 
 ### User Iinterface (UI):
 Implements a Gradio app for interactive querying.
+
 
 
 # How to Use
