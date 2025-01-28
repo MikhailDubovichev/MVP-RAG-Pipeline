@@ -8,7 +8,7 @@ The goal is to ingest, process, and index a variety of document types (PDF, Word
 
 ## Data Preparation Notebook
 
-### File Discovery & Validation:
+- File Discovery & Validation:
 Scans a to_process directory on Google Drive for new documents. Loads previously processed file lists from JSON records to avoid duplication.
 
 ### Ingestion & Preprocessing:
