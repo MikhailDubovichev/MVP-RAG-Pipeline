@@ -22,22 +22,20 @@ The goal is to ingest, process, and index a variety of document types (PDF, Word
 
 ## Inference Notebook
 
-### Loading Artifacts:
-Reads the stored Faiss and Whoosh indexes into memory.
+- **Loading Artifacts:** Reads the stored Faiss and Whoosh indexes into memory.
 
-### Hybrid Retrieval:
-Retrieves top-k matches from Faiss (vector similarity).
-Retrieves top-k matches from Whoosh (BM25).
-Combines them using a “reciprocal rank fusion” (or a similar approach) to produce a hybrid list of potentially relevant chunks.
-Reranks results using a cross-encoder.
+- **Hybrid Retrieval:**
+  - Retrieves top-k matches from Faiss (vector similarity).
+  - Retrieves top-k matches from Whoosh (BM25).
+  - Combines them using a “reciprocal rank fusion” (or a similar approach) to produce a hybrid list of potentially relevant chunks.
+  - Reranks results using a cross-encoder.
 
-### Context & LLM:
-Joins the top reranked chunks into a single “context” block.
-Feeds a final prompt (including the user’s question) to a Nebius LLM.
-Returns both an answer and references.
+- **Context & LLM:**
+  - Joins the top reranked chunks into a single “context” block.
+  - Feeds a final prompt (including the user’s question) to a Nebius LLM.
+  - Returns both an answer and references.
 
-### User Iinterface (UI):
-Implements a Gradio app for interactive querying.
+- **User Iinterface (UI):** Implements a Gradio app for interactive querying.
 
 
 
