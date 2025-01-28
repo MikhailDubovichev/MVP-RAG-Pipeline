@@ -40,7 +40,7 @@ The goal is to ingest, process, and index a variety of document types (PDF, Word
 
 
 # How to Use
-Open notebooks in Google Colab (recommended if working with Google Drive).
+Open notebooks in Google Colab.
 Place a config.json containing your Nebius API key in the path specified within the notebooks or adjust the code to use another model provider.
 Adjust any local paths for your data.
 Ensure you have a folder structure such as RAG_Project_5/data/to_process and RAG_Project_5/data/processed or change the code according to your file structure
