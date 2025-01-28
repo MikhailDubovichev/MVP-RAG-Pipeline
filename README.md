@@ -1,5 +1,5 @@
 # Overview
-This repository contains two Google Colab notebooks — Data Preparation and Inference — forming a working MVP of end-to-end Retrieval-Augmented Generation (RAG) pipeline.
+This repository contains two Google Colab notebooks — **Data Preparation** and **Inference** — forming a **working MVP of end-to-end Retrieval-Augmented Generation (RAG) pipeline**.
 The goal is to ingest, process, and index a variety of document types (PDF, Word, PowerPoint, Excel) into both vector-based and text-based indexes, then serve user queries through an LLM, returning contextually relevant answers and sources.
 
 
@@ -8,21 +8,16 @@ The goal is to ingest, process, and index a variety of document types (PDF, Word
 
 ## Data Preparation Notebook
 
-- "File Discovery & Validation:"
-Scans a to_process directory on Google Drive for new documents. Loads previously processed file lists from JSON records to avoid duplication.
+- **File Discovery & Validation:** Scans a to_process directory on Google Drive for new documents. Loads previously processed file lists from JSON records to avoid duplication.
+- **Ingestion & Preprocessing:**
+  - **PDF:** Each page is read and turned into a separate chunk.
+  - **Word:** Uses headings to split the document and then chunks large sections by token count.
+  - **PowerPoint:** Extracts text slide by slide.
+  - **Excel:** Converts each row into a chunk of text with relevant metadata (sheet, row number).
 
-### Ingestion & Preprocessing:
-PDFs: Each page is read and turned into a separate chunk.
-Word: Uses headings to split the document and then chunks large sections by token count.
-PowerPoint: Extracts text slide by slide.
-Excel: Converts each row into a chunk of text with relevant metadata (sheet, row number).
+-  **Index Creation:** Faiss Index for semantic similarity search using Nebius-provided embeddings (via NebiusEmbedding). Whoosh Index for BM25-based text matching.
 
-### Index Creation:
-Faiss Index for semantic similarity search using Nebius-provided embeddings (via NebiusEmbedding).
-Whoosh Index for BM25-based text matching.
-
-### Output:
-Produces LlamaIndex storage artifacts (docstore.json, graph_store.json, index_store.json, default__vector_store.faiss) in /data/faiss_index/, plus a Whoosh index stored in /data/whoosh_index/.
+- **Output:** Produces LlamaIndex storage artifacts (docstore.json, graph_store.json, index_store.json, default__vector_store.faiss) in /data/faiss_index/, plus a Whoosh index stored in /data/whoosh_index/.
 
 
 ## Inference Notebook
